@@ -1,7 +1,13 @@
 <title>Pythonic PHP Formatter</title>
-<h1>Pythonic PHP Formatter</h1>
+<h1>
+	Pythonic PHP Formatter
+	<img src="http://www.94cb.com//static/editor/dialogs/emotion/images/pp/i_f46.png" />
+	<img src="http://www.94cb.com//static/editor/dialogs/emotion/images/pp/i_f25.png" />
+	<img src="http://www.94cb.com//static/editor/dialogs/emotion/images/pp/i_f50.png"/>
+</h1>
 <p>
-<a href="https://github.com/lincanbin/Pythonic-PHP-Code-Formatter" target="_blank">Fork on Github: https://github.com/lincanbin/Pythonic-PHP-Code-Formatter</a></p>
+<a href="https://github.com/lincanbin/Pythonic-PHP-Code-Formatter" target="_blank">Fork on Github: https://github.com/lincanbin/Pythonic-PHP-Code-Formatter</a>
+</p>
 <hr />
 <form action="?" method="post">
 	<p>
@@ -49,7 +55,7 @@ class Vegetable
 // extends the base class
 class Spinach extends Vegetable{
 	
-	public $cooked = false;
+	var $cooked = false;
 	
 	function Spinach(){
 		$this->Vegetable(true, "green");
@@ -70,7 +76,7 @@ class Spinach extends Vegetable{
 		</textarea>
 	</p>
 	<p>
-		<input type="submit" value="Format" />
+		Line width: &nbsp;&nbsp;<input type="number" name="lineSize" min="20" max="160" value="<?php echo isset($_POST['lineSize'])?intval($_POST['lineSize']):80; ?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Format" />
 	</p>
 	<hr />
 	<p>
@@ -80,7 +86,10 @@ class Spinach extends Vegetable{
 require(dirname(__FILE__) . "/src/Pythonic.PHP.Formatter.class.php");
 if(isset($_POST['input'])){
 	$PythonicPHPFormatter = new PythonicPHPFormatter($_POST['input']);
-	echo htmlspecialchars($PythonicPHPFormatter->format());
+	if(isset($_POST['lineSize']) && intval($_POST['lineSize']) >=20 && intval($_POST['lineSize']) <=160 ){
+		$PythonicPHPFormatter->lineSize = intval($_POST['lineSize']);
+	}
+		echo htmlspecialchars($PythonicPHPFormatter->format());
 }
 ?>
 		</textarea>
