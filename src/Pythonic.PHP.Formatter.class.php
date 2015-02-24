@@ -1,5 +1,16 @@
 <?php
-
+/*
+ * Pythonic PHP Code Formatter
+ * https://github.com/lincanbin/Pythonic-PHP-Code-Formatter
+ *
+ * Copyright 2014, Lin Canbin
+ * http://www.94cb.com/Pythonic-PHP-Code-Formatter
+ *
+ * Licensed under the Apache License, Version 2.0:
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Pythonic PHP code formatter. 
+ */
 class PythonicPHPFormatter
 {
 	public $indentChar = ' ';

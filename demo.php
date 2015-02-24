@@ -1,11 +1,25 @@
 <title>Pythonic PHP Formatter</title>
 <h1>Pythonic PHP Formatter</h1>
+<p>
+<a href="https://github.com/lincanbin/Pythonic-PHP-Code-Formatter" target="_blank">Fork on Github: https://github.com/lincanbin/Pythonic-PHP-Code-Formatter</a></p>
 <hr />
 <form action="?" method="post">
 	<p>
 		<h3>Input:</h3>
 		<textarea rows="16" cols="100" name="input">
 <?php
+/*
+ * Pythonic PHP Code Formatter
+ * https://github.com/lincanbin/Pythonic-PHP-Code-Formatter
+ *
+ * Copyright 2014, Lin Canbin
+ * http://www.94cb.com/Pythonic-PHP-Code-Formatter
+ *
+ * Licensed under the Apache License, Version 2.0:
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Pythonic PHP code formatter. 
+ */
 if(isset($_POST['input'])){
 	echo htmlspecialchars($_POST['input']);
 }else{
