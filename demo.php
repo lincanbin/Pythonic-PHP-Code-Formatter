@@ -55,7 +55,7 @@ class Vegetable
 // extends the base class
 class Spinach extends Vegetable{
 	
-	var $cooked = false;
+	public $cooked = false;
 	
 	function Spinach(){
 		$this->Vegetable(true, "green");
