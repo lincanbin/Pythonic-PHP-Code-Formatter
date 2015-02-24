@@ -6,7 +6,7 @@ class Vegetable                                             {
     public $color                                           ;
     function Vegetable($edible, $color = "green")           {
         $this->edible = $edible                             ;
-        $this->color = $color                              ;}
+        $this->color = $color                               ;}
     function is_edible()                                    {
         return $this->edible                                ;}
     function what_color()                                   {
@@ -16,7 +16,7 @@ class Vegetable                                             {
 
 // extends the base class
 class Spinach extends Vegetable                             {
-    public $cooked = false                                     ;
+    public $cooked = false                                  ;
     function Spinach()                                      {
         $this->Vegetable(true, "green")                     ;}
     function cook_it()                                      {
