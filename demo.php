@@ -1,9 +1,9 @@
-<title>Pythonic PHP Formatter</title>
+<title>Pythonic PHP Code Formatter</title>
 <h1>
-	Pythonic PHP Formatter
+	Pythonic PHP Code Formatter
 	<img src="http://www.94cb.com//static/editor/dialogs/emotion/images/pp/i_f46.png" />
 	<img src="http://www.94cb.com//static/editor/dialogs/emotion/images/pp/i_f25.png" />
-	<img src="http://www.94cb.com//static/editor/dialogs/emotion/images/pp/i_f50.png"/>
+	<img src="http://www.94cb.com//static/editor/dialogs/emotion/images/pp/i_f50.png" />
 </h1>
 <p>
 <a href="https://github.com/lincanbin/Pythonic-PHP-Code-Formatter" target="_blank">Fork on Github: https://github.com/lincanbin/Pythonic-PHP-Code-Formatter</a>
