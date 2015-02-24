@@ -28,7 +28,7 @@ class PythonicPHPFormatter
 	{
 		
 		$lines = explode("\n", $sourceCode);
-		foreach($lines as &$line){
+		foreach ($lines as &$line) {
 			$line = ltrim($line, " \t\0\x0B");
 		}
 		$this->source = implode("\n", $lines);
@@ -41,7 +41,7 @@ class PythonicPHPFormatter
 		//var_dump($tokens);
 		foreach ($tokens as &$token) {
 			if (is_array($token)) {
-				$token[] = token_name($token[0]);//$token[3]
+				$token[] = token_name($token[0]); //$token[3]
 			}
 		}
 		
@@ -128,7 +128,7 @@ class PythonicPHPFormatter
 						if ($in_dec) {
 							$in_dec = false;
 							//var_dump($this->getIndentNum($token, $k, $t_count));
-							$token = str_repeat($this->indentChar, $this->getIndentNum($token, $k, $t_count)) . $token . $nl;
+							$token  = str_repeat($this->indentChar, $this->getIndentNum($token, $k, $t_count)) . $token . $nl;
 							$t_count++;
 							
 							$token .= str_repeat($indentChar, $t_count);
@@ -156,7 +156,7 @@ class PythonicPHPFormatter
 					
 					case ';':
 						$in_dec = false;
-						$token  =  str_repeat($this->indentChar, $this->getIndentNum($token, $k, $t_count)) . $token . $nl . str_repeat($indentChar, $t_count);
+						$token  = str_repeat($this->indentChar, $this->getIndentNum($token, $k, $t_count)) . $token . $nl . str_repeat($indentChar, $t_count);
 						break;
 					
 					case '.':
@@ -292,8 +292,8 @@ class PythonicPHPFormatter
 						break;
 					
 					case T_COMMENT:
-					//Delete T_COMMENT
-					
+						//Delete T_COMMENT
+						
 						$this->trim($text);
 						$this->rtrim($last);
 						$this->rtrim($lastw);
@@ -305,7 +305,7 @@ class PythonicPHPFormatter
 						} else {
 							$text = $nl . str_repeat($indentChar, $t_count) . $text . $nl . str_repeat($indentChar, $t_count);
 						}
-					
+						
 						break;
 					
 					case T_DOC_COMMENT:
@@ -484,15 +484,14 @@ class PythonicPHPFormatter
 	protected function getIndentNum($token, $currentKey, $t_count)
 	{
 		//echo "\n".$token;
-		$isEnd = false;
-		$lineChars = $t_count*$this->indentSize;
+		$isEnd     = false;
+		$lineChars = $t_count * $this->indentSize;
 		//echo "\nlineChars: ".$lineChars."\n";
 		$currentKey--;
 		$isGetData = false;
-		do
-		{
+		do {
 			$currentString = is_array($this->tokens[$currentKey]) ? $this->tokens[$currentKey][1] : $this->tokens[$currentKey];
-			$noSpaceOrTab = $this->noSpaceOrTab($currentString);
+			$noSpaceOrTab  = $this->noSpaceOrTab($currentString);
 			$isGetData |= $this->noTrimEmpty($currentString);
 			//var_dump(boolval($isGetData));
 			//$currentString = trim($currentString, " \t\0\x0B");
@@ -500,69 +499,70 @@ class PythonicPHPFormatter
 				case ";":
 				case "{":
 					//var_dump(strlen(trim($currentString)));
-					if($isGetData && $noSpaceOrTab && ($this->startWithROrN($currentString) || $this->endWithROrN($currentString)))
-					{
-						if(!$this->endWithROrN($currentString)){
+					if ($isGetData && $noSpaceOrTab && ($this->startWithROrN($currentString) || $this->endWithROrN($currentString))) {
+						if (!$this->endWithROrN($currentString)) {
 							$lineChars += strlen(trim($currentString));
 						}
 						$isEnd = true;
-					}else{
-							$lineChars += strlen(trim($currentString, "\r\n"));
-							switch ($token) {
-								case '.':
-								case '=':
-								case '?':
-								case ':':
-									$lineChars += 2;
-									break;
-								case '!':
-								case ',':
-									$lineChars += 1;
-									break;
-								default:
-									# code...
-									break;
-							}
+					} else {
+						$lineChars += strlen(trim($currentString, "\r\n"));
+						switch ($token) {
+							case '.':
+							case '=':
+							case '?':
+							case ':':
+								$lineChars += 2;
+								break;
+							case '!':
+							case ',':
+								$lineChars += 1;
+								break;
+							default:
+								# code...
+								break;
+						}
 					}
 					//echo "\nlineChars: ".$lineChars."\n";
 					break;
 				/*
 				case "}":
-					$lineChars = $this->lineSize;
-					$isEnd = true;
-					break;
+				$lineChars = $this->lineSize;
+				$isEnd = true;
+				break;
 				*/
 				default:
 					$isEnd = true;
 					break;
 			}
 			$currentKey--;
-			if($currentKey == 0)
-			{
+			if ($currentKey == 0) {
 				$isEnd = true;
 			}
-		}while(!$isEnd);
+		} while (!$isEnd);
 		//echo " : ".($lineChars)."\n";
-		if($lineChars>$this->lineSize)
-		{
+		if ($lineChars > $this->lineSize) {
 			$lineChars = $this->lineSize;
 		}
-		return ($this->lineSize-$lineChars);
+		return ($this->lineSize - $lineChars);
 	}
-
-	protected function startWithROrN($str) {
-		return ( strpos($str, "\n") === 0 || strpos($str, "\r\n") === 0 );
+	
+	protected function startWithROrN($str)
+	{
+		return (strpos($str, "\n") === 0 || strpos($str, "\r\n") === 0);
 	}
-	protected function endWithROrN($str) {
-		return ((substr($str, - 1) === "\n") || (substr($str, - 2) === "\r\n"));
+	protected function endWithROrN($str)
+	{
+		return ((substr($str, -1) === "\n") || (substr($str, -2) === "\r\n"));
 	}
-
-	protected function noSpaceOrTab($str) {
-		return !(trim($str, " \t\0\x0B")==null);
+	
+	protected function noSpaceOrTab($str)
+	{
+		return !(trim($str, " \t\0\x0B") == null);
 	}
-	protected function noTrimEmpty($str) {
+	protected function noTrimEmpty($str)
+	{
 		//var_dump(trim($str)==null);
 		//var_dump(!(trim($str)==null));
-		return !(trim($str)==null);
+		return !(trim($str) == null);
 	}
 }
