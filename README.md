@@ -2,23 +2,25 @@
 
 Pythonic PHP code formatter.
 
-Inspired by [Twitter](https://twitter.com/thedirtycoder/status/569339014085517312). 
-
 Just for fun.
+
+![Twitter](https://cloud.githubusercontent.com/assets/5785188/6370808/36dd622a-bd2f-11e4-8403-4b595182906d.png)
+
+Inspired by [Twitter](https://twitter.com/thedirtycoder/status/569339014085517312). 
 
 ============
 
-Demo/Official Website
+Demo
 ------------
 
-* [Project's Official Website: http://www.94cb.com/Pythonic-PHP-Code-Formatter](http://www.94cb.com/Pythonic-PHP-Code-Formatter)
+* [Demo: http://www.94cb.com/Pythonic-PHP-Code-Formatter](http://www.94cb.com/Pythonic-PHP-Code-Formatter)
 
 Screenshot
 ------------
 * Before formatting
 
-![before](https://cloud.githubusercontent.com/assets/5785188/6346102/c498a9d2-bc47-11e4-8a99-bfd4ce2f6631.PNG)
+![before](https://cloud.githubusercontent.com/assets/5785188/6370859/15b1a772-bd30-11e4-9e4d-9f9a4b19255e.png)
 
 * After formatting
 
-![after](https://cloud.githubusercontent.com/assets/5785188/6346105/c947b766-bc47-11e4-98d8-d373dfc2c9c8.PNG)
+![after](https://cloud.githubusercontent.com/assets/5785188/6370858/159bf9e0-bd30-11e4-913a-1c2ab4c611e0.png)
