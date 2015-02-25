@@ -4,6 +4,8 @@ Pythonic PHP code formatter.
 
 Inspired by [Twitter](https://twitter.com/thedirtycoder/status/569339014085517312). 
 
+Just for fun.
+
 ============
 
 Demo/Official Website
