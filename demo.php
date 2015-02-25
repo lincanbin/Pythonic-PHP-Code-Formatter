@@ -34,42 +34,54 @@ echo '&lt;?php
 class Vegetable
 {
 	
-	public $edible;
-	public $color;
+	private $edible;
+	private $color;
 	
-	function Vegetable($edible, $color = "green"){
+	public function Vegetable($edible, $color = "green")
+	{
 		$this->edible = $edible;
-		$this->color  = $color;
+		$this->color = $color;
 	}
 	
-	function is_edible(){
+	public function is_edible()
+	{
 		return $this->edible;
 	}
 	
-	function what_color(){
+	public function what_color()
+	{
 		return $this->color;
 	}
 	
 } // end of class Vegetable
 
 // extends the base class
-class Spinach extends Vegetable{
+class Spinach extends Vegetable
+{
 	
 	public $cooked = false;
 	
-	function Spinach(){
+	public function Spinach()
+	{
 		$this->Vegetable(true, "green");
 	}
 	
-	function cook_it(){
+	public function cook_it()
+	{
 		$this->cooked = true;
 	}
 	
-	function is_cooked(){
+	public function is_cooked()
+	{
 		return $this->cooked;
 	}
 	
-} // end of class Spinach
+}
+// end of class Spinach
+
+$a = new Vegetable(false, "red");
+var_dump($a->is_edible());
+var_dump($a->what_color());
 ?&gt;';
 }
 ?>
@@ -83,24 +95,21 @@ class Spinach extends Vegetable{
 		<h3>Output:</h3>
 		<textarea rows="16" cols="100">
 <?php
-require(dirname(__FILE__) . "/src/Pythonic.PHP.Formatter.class.php");
-if(isset($_POST['input'])){
-	$PythonicPHPFormatter = new PythonicPHPFormatter($_POST['input']);
-	if(isset($_POST['lineSize']) && intval($_POST['lineSize']) >=20 && intval($_POST['lineSize']) <=160 ){
-		$PythonicPHPFormatter->lineSize = intval($_POST['lineSize']);
-	}
-		echo htmlspecialchars($PythonicPHPFormatter->format());
-}
+require(dirname(__FILE__) . "/src/Pythonic.PHP.Formatter.class.php")                                                    ;
+if (isset($_POST['input']))                                                                                             {
+    $PythonicPHPFormatter = new PythonicPHPFormatter($_POST['input'])                                                   ;
+    if (isset($_POST['lineSize']) && intval($_POST['lineSize']) >= 20 && intval($_POST['lineSize'])<=160)               {
+        $PythonicPHPFormatter->lineSize = intval($_POST['lineSize'])                                                    ;}
+    echo htmlspecialchars($PythonicPHPFormatter->format())                                                              ;}
 ?>
 		</textarea>
 		<pre>
 <?php
-if(isset($_POST['input'])){
-	$tokens = token_get_all($_POST['input']);
-	//var_dump(trim($tokens[51][1]));
-	//var_dump($tokens);
-	echo htmlspecialchars($PythonicPHPFormatter->format());
-}
+if (isset($_POST['input']))                                                     {
+    $tokens = token_get_all($_POST['input'])                                    ;
+    //var_dump(trim($tokens[51][1]))                                            ;
+    //var_dump($tokens)                                                         ;
+    echo htmlspecialchars($PythonicPHPFormatter->format())                      ;}
 ?>
 		</pre>
 	</p>
